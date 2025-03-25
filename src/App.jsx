@@ -1,6 +1,7 @@
 import { useEffect ,useState } from 'react';
 import Card from './Card';
 import './App.css'
+import AboutUs from "./assets/AboutUs"; // Se till att sökvägen är korrekt
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -22,6 +23,8 @@ function App() {
         ))}
       </div>
     </div>
+
+    
   );
 };
 
