@@ -1,5 +1,5 @@
-import { useEffect ,useState } from 'react';
-import Card from './Card';
+import { useEffect, useState } from 'react';
+import Card from './Card.jsx';
 import './App.css'
 
 function App() {
@@ -7,11 +7,11 @@ function App() {
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => setProducts(data))
-    .catch((error) => console.log("Error Fetching Data", error));
-    
-  },[]);
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.log("Error Fetching Data", error));
+
+  }, []);
 
   return (
     <div className="main-div">

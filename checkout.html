@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kassa | Faux Finds</title>
+    <link rel="icon" type="image/svg+xml" href="pictures/icon.png">
+    <link rel="stylesheet" href="src/checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a class="logo" href="index.html">
+        <img src="pictures/logo.png" alt="Faux Finds logo">
+    </a>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="rubrik1">Kassa</h1>
+        </div>
+        <div class="rubrik">
+            <h4 class="rubrik2">1. Dina produkter</h4>
+        </div>
+
+        <div class="box">
+            <div class="box2">
+                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <div class="totalt">
+                    <h4 class="rubrik3">Totalt belopp inkl. moms</h4>
+                </div>
+            </div>
+        </div>
+        <div class="rubrik">
+            <h4 class="rubrik2">2. Dina uppgifter</h4>
+        </div>
+        <div class="box">
+            <div class="box2">
+                <form action="index.php" method="post">
+                    <div class="form">
+
+                        <input type="email" id="email" name="email" maxlength="50" required placeholder="Email*">
+
+                        <div class="name-container">
+                            <input type="text" id="firstname" name="firstname" minlength="2" maxlength="50" required
+                                placeholder="First Name*">
+                            <input type="text" id="lastname" name="lastname" minlength="2" maxlength="50" required
+                                placeholder="Last Name*">
+                        </div>
+
+                        <input type="text" id="street_address" name="street_address" lang="sv" minlength="2"
+                            maxlength="50" required placeholder="Street address*">
+
+                        <div class="address-container">
+                            <input type="text" id="postal_code" name="postal_code" minlength="5" maxlength="5"
+                                inputmode="numeric" required placeholder="ZIP Code*">
+
+                            <input type="text" id="city" name="city" lang="sv" minlength="2" maxlength="50" required
+                                placeholder="Town / City*">
+                        </div>
+
+                        <input type="tel" id="phone" name="phone" maxlength="50" required placeholder="Phone*">
+
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="submit">Betala köp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div></div>
+    </div>
+</body>
+
+</html>

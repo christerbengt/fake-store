@@ -1,4 +1,4 @@
-.main-div{
+.main-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     padding: 20px;
 }
 
-.card{
+.card {
     width: 200px;
     border: 1px solid red;
     border-radius: 5px;
@@ -17,16 +17,16 @@
     transition: transform 0.2;
 }
 
-.card h2{
+.card h2 {
     font-size: 20px;
     color: hsl(0, 1%, 31%);
 }
 
-.card p{
+.card p {
     font-size: 18px;
 }
 
-.card button{
+.card button {
     padding: 4px 8px;
     font-size: large;
     border-radius: 5px;
@@ -37,7 +37,7 @@
     transform: scale(1.03);
 }
 
-.product-image{
+.product-image {
     width: 150px;
     height: 200px;
     object-fit: contain;
