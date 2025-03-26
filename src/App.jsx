@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import Card from "./Card";
-import MainMenu from "./MainMenu";
-import "./App.css";
+import { useEffect ,useState } from 'react';
+import Card from './Card';
+import './App.css'
 
 function App() {
   const [products, setProducts] = useState([]);

@@ -131,3 +131,13 @@
     color: #0056b3;
     text-decoration: underline;
 }
+
+/* Hover-effekt för kort */
+.card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Gör kortet lite större */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Lägg till en skugg-effekt */
+  }
