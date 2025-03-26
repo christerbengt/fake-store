@@ -41,7 +41,7 @@ function MainMenu({ onFilterChange }) {
         </select>
       </div>
 
-      <a href="/about" className="btn btn-link">
+      <a href="./AboutUs.jsx" className="btn btn-link">
         About Us
       </a>
     </div>

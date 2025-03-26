@@ -1,6 +1,10 @@
 import { useEffect ,useState } from 'react';
-import Card from './Card';
+import Card from './Card.jsx';
 import './App.css'
+import './AboutUs.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainMenu from './MainMenu';
+import AboutUs from './AboutUs.jsx';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -50,13 +54,14 @@ function App() {
     <>
       <MainMenu onFilterChange={handleFilterChange} />
       
-      
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {filteredProducts.map((product) => (
           <div key={product.id} className="col">
             <Card product={product} />
       </div>
         ))}
+
+        <AboutUs></AboutUs>
       </div>
     </>
   );
