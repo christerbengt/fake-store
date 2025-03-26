@@ -1,7 +1,7 @@
 import { useEffect ,useState } from 'react';
 import Card from './Card';
-import './App.css'
-import './AboutUs.jsx'
+import './App.css';
+import './AboutUs.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainMenu from './MainMenu';
 import AboutUs from './AboutUs.jsx';
@@ -14,12 +14,41 @@ function App() {
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-    .then((response) => response.json())
-    .then((data) => setProducts(data))
-    .catch((error) => console.log("Error Fetching Data", error));
-    
-  },[]);
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        setFilteredProducts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log("Error Fetching Data", error);
+        setLoading(false);
+      });
+  }, []);
 
+        //Byte av visade kategorier av produkter
+  useEffect(() => {
+    let filtered = [...products];
+
+    if (filter.category) {
+      filtered = filtered.filter((product) => product.category === filter.category);
+    }
+    setFilteredProducts(filtered);
+  }, [filter, products]);
+
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <>
       <MainMenu onFilterChange={handleFilterChange} />
@@ -31,7 +60,10 @@ function App() {
       </div>
         ))}
 
-        <AboutUs></AboutUs>
+        <AboutUs>{'./AboutUs.jsx'}</AboutUs>
+        
+       <a href="checkout.html">hej svens HATA INTE </a>
+        
       </div>
     </>
   );
