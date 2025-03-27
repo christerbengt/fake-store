@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 
 function MainMenu({ onFilterChange }) {
   const [categories, setCategories] = useState([]);
@@ -40,10 +41,9 @@ function MainMenu({ onFilterChange }) {
           ))}
         </select>
       </div>
-
-      <a href="./AboutUs.jsx" className="btn btn-link">
-        About Us
-      </a>
+          <Link to="/AboutUs" className="aboutus">
+            About us
+          </Link>
     </div>
   );
 }
