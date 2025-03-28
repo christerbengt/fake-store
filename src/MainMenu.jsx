@@ -44,6 +44,10 @@ function MainMenu({ onFilterChange }) {
           <Link to="/AboutUs" className="aboutus">
             About us
           </Link>
+          <br></br>
+          <Link className="checkout-link" to="/checkout">
+          Gå till kassan
+        </Link>
     </div>
   );
 }
