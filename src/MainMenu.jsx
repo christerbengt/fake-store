@@ -24,10 +24,9 @@ function MainMenu({ onFilterChange }) {
   return (
     <div className="container py-4">
       <h1 className="text-center mb-4">Fake Store Products</h1>
-
+  
       <div className="d-flex justify-content-between align-items-center mb-4">
-           
-           {/* "drop-down" meny för kategorierna  */}
+        {/* "drop-down" meny för kategorierna */}
         <select
           className="form-select"
           value={selectedCategory}
@@ -41,13 +40,21 @@ function MainMenu({ onFilterChange }) {
           ))}
         </select>
       </div>
-          <Link to="/AboutUs" className="aboutus">
-            About us
-          </Link>
-          <br></br>
-          <Link className="checkout-link" to="/checkout">
-          Gå till kassan
-        </Link>
+  
+      <Link to="/AboutUs" className="aboutus">
+        About us
+      </Link>
+      <br />
+  
+      <Link className="checkout-link" to="/checkout">
+        Gå till kassan
+      </Link>
+      <br />
+  
+      {/* NY LÄNK TILL THANKYOU TILLFÄLLIG  */}
+      <Link to="/thankyou" className="thankyou-test-link">
+        Testa Tack-sidan
+      </Link>
     </div>
   );
 }
