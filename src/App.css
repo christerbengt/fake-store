@@ -1,29 +1,32 @@
-.main-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+/* Custom styles that work with Bootstrap */
+
+body {
     min-height: 100vh;
-    padding: 20px;
+    background-image: linear-gradient(#242424, #222222);
+    color: #fff;
+    font-family: "Hanken Grotesk", sans-serif;
 }
 
+/* Card styles */
 .card {
-    width: 200px;
-    border: 1px solid red;
+    width: 100%;
+    border: 1px solid #444;
     border-radius: 5px;
-    padding: 10px;
-    background-color: white;
+    background-color: #333;
     text-align: center;
     transition: transform 0.2s;
+    position: relative;
+    overflow: hidden;
 }
 
-.card h2 {
+.card h2, .card h5 {
     font-size: 20px;
-    color: hsl(0, 1%, 31%);
+    color: #fff;
 }
 
 .card p {
     font-size: 18px;
+    color: #ddd;
 }
 
 .card button {
@@ -35,15 +38,18 @@
 
 .card:hover {
     transform: scale(1.03);
+    border-color: #e0ae50;
 }
 
 .layer {
     width: 100%;
     height: 0;
-    background: linear-gradient(rgba(0,0,0,0.6), #383838);
+    background: linear-gradient(rgba(0,0,0,0.8), #222);
     border-radius: 5px;
     position: absolute;
     left: 0;
+    top: 0;
+    right: 0;
     bottom: 0;
     overflow: hidden;
     display: flex;
@@ -55,23 +61,23 @@
     font-size: 14px;
     color: white;
     transition: height 0.5s ease-in-out;
+    z-index: 2;
 }
 
-.card:hover .layer{
+.card-img-top:hover .layer {
     height: 100%;
+    top: 0;
 }
 
-
-.layer h3{
+.layer h3 {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 8px;
     max-width: 90%;
     overflow: hidden;
-   
 }
 
-.layer p{
+.layer p {
     font-size: 12px;
     max-width: 90%;
     text-align: center;
@@ -79,65 +85,112 @@
     margin-bottom: 10px;
 }
 
-.layer a{
-    margin-top: 20px;
-    color: #ff004f ;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 60px;
-    background: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
-
-.layer button {
+.layer-button {
     margin-top: 10px;
-    background: white;
-    color: #ff004f;
+    background: #e0ae50;
+    color: #222;
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
-    transition:  0.3s ease;
-
-}
-
-.product-image{
-    width: 150px;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    background-color: white;
-
-}
-
-.container {
-    max-width: 1200px;
-}
-
-.form-select,
-.form-control {
-    min-width: 150px;
-}
-
-.btn-link {
-    text-decoration: none;
+    transition: 0.3s ease;
     font-weight: bold;
-    color: #007bff;
 }
 
-.btn-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
+.layer-button:hover {
+    background: #ffd68b;
 }
 
-/* Hover-effekt för kort */
-.card {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
-  .card:hover {
-    transform: scale(1.05); /* Gör kortet lite större */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Lägg till en skugg-effekt */
-  }
+/* Responsive tweaks */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.product-image-container {
+    background-color: #444;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    position: relative;
+    z-index: 1;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #e0ae50;
+    border-color: #e0ae50;
+    color: #222;
+    font-weight: bold;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: #ffd68b;
+    border-color: #ffd68b;
+    color: #222;
+    transition-duration: 0.4s;
+}
+
+/* Override Bootstrap default styles - dark theme only for the appropriate elements */
+.form-select, .form-control {
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+.form-select:focus, .form-control:focus {
+    background-color: #333;
+    color: #fff;
+    border-color: #e0ae50;
+    box-shadow: 0 0 0 0.25rem rgba(224, 174, 80, 0.25);
+}
+
+.btn-outline-primary {
+    color: #e0ae50;
+    border-color: #e0ae50;
+}
+
+.btn-outline-primary:hover {
+    background-color: #e0ae50;
+    color: #222;
+}
+
+/* Fix overlay positioning */
+.card-img-top {
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-body {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Checkout button */
+.checkout-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Add spacing at the bottom of the page */
+.container {
+    margin-bottom: 3rem;
+}
