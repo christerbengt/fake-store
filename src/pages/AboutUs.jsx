@@ -1,12 +1,12 @@
 import React from "react";
-import "./AboutUs.css";
+import "../styles/AboutUs.css";
 
 const AboutUs = () => {
   return (
     <div className="about-container">
       {/* Sidebar */}
       <div className="sidebar">
-        <img src="/genomskinnlig.png" alt="Faux Finds Logo" className="logo" />
+        <img src="../pictures/logo.png" alt="Faux Finds Logo" className="logo" />
         <a href="#" className="nav-link">Om oss</a>
         <a href="#" className="nav-link">Här finns vi</a>
         <a href="#" className="nav-link">Kartan</a>

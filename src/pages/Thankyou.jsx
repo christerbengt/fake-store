@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"; //USE s för spara värdet & 
 // USE e "När den här sidan laddas, gör detta en gång."
-import "./ThankYou.css";
+import "../styles/ThankYou.css";
 
 const ThankYou = () => {
   const [orderNumber, setOrderNumber] = useState("");

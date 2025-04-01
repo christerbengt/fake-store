@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
-import Card from './Card';
-import './App.css';
+import { Link } from 'react-router-dom';
+import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MainMenu from './MainMenu';
-import AboutUs from './AboutUs.jsx';
-import ThankYou from "../Thankyou";
+
+import MainMenu from '../components/MainMenu';
+import Card from '../components/Card';
+import AboutUs from '../pages/AboutUs';
+import Checkout from '../pages/Checkout';
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,6 +16,7 @@ function App() {
   const [filter, setFilter] = useState({ category: "" });
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState([]);
 
   // Add Hanken Grotesk font
   useEffect(() => {
@@ -104,14 +108,46 @@ function App() {
   }
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/thankyou" element={<ThankYou />} />
-      </Routes>
-    </Router>
+
+    <div className="container-fluid">
+      <MainMenu onFilterChange={handleFilterChange} onAboutUsClick={toggleAboutUs} />
+
+      {showAboutUs ? (
+        <AboutUs />
+      ) : (
+        <div className="container px-4">
+          {/* Debug information */}
+          <div className="row mb-3">
+            <div className="col-12">
+              <div className="p-3 text-white">
+                <small>Debug: {filteredProducts.length} products loaded</small>
+              </div>
+            </div>
+          </div>
+
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-5" style={{ color: "white" }}>
+              <h3>No products found</h3>
+              <p>Try selecting a different category or refresh the page.</p>
+            </div>
+          ) : (
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+              {filteredProducts.map((product) => (
+                <div key={product.id} className="col">
+                  <Card product={product} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      <div className="mt-5 text-center mb-5">
+        <Link to={Checkout} className="btn btn-primary">
+          Go to Checkout
+        </Link>
+      </div>
+    </div>
   );
 }
 

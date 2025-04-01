@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Card from "./Card";
-import MainMenu from "./MainMenu";
+import Card from "../components/Card";
+import MainMenu from "../components/MainMenu";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
