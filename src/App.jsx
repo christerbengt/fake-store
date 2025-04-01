@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainMenu from './MainMenu';
 import AboutUs from './AboutUs.jsx';
+import ThankYou from "../Thankyou";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -103,43 +104,14 @@ function App() {
   }
 
   return (
-    <div className="container-fluid">
-      <MainMenu onFilterChange={handleFilterChange} onAboutUsClick={toggleAboutUs} />
-      
-      {showAboutUs ? (
-        <AboutUs />
-      ) : (
-        <div className="container px-4">
-          {/* Debug information */}
-          <div className="row mb-3">
-            <div className="col-12">
-              <div className="p-3 text-white">
-                <small>Debug: {filteredProducts.length} products loaded</small>
-              </div>
-            </div>
-          </div>
-          
-          {filteredProducts.length === 0 ? (
-            <div className="text-center py-5" style={{ color: "white" }}>
-              <h3>No products found</h3>
-              <p>Try selecting a different category or refresh the page.</p>
-            </div>
-          ) : (
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-              {filteredProducts.map((product) => (
-                <div key={product.id} className="col">
-                  <Card product={product} />
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-      
-      <div className="mt-5 text-center mb-5">
-        <a href="checkout.html" className="btn btn-primary btn-lg px-5">Proceed to Checkout</a>
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/thankyou" element={<ThankYou />} />
+      </Routes>
+    </Router>
   );
 }
 
