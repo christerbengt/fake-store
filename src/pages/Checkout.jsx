@@ -8,13 +8,13 @@ import validateFields from "../scripts/validation.js";
 import logo from "../pictures/logo.png";
 
 function Checkout() {
-  const [formData, setFormData] = useState( {
-    name: '',
-    email: '',
-    phoneNumber: '',
-    streetAddress: '',
-    zipCode: '',
-    city: ''
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    streetAddress: "",
+    zipCode: "",
+    city: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -22,18 +22,18 @@ function Checkout() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const productData = localStorage.getItem('selectedProduct');
+    const productData = localStorage.getItem("selectedProduct");
     if (productData) {
       setSelectedProduct(JSON.parse(productData));
     }
   }, []);
 
   const handleInput = (event) => {
-    setFormData({ ...formData,  [event.target.name]: event.target.value });
-    setErrors({ ...errors, [event.target.name]: ""})
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setErrors({ ...errors, [event.target.name]: "" });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = () => {
     const validationErrors = validateFields(formData);
 
     if (validationErrors && Object.keys(validationErrors).length > 0) {
@@ -59,39 +59,48 @@ function Checkout() {
         </div>
 
         <div className="box">
-  <div className="box2">
-    {selectedProduct ? (
-      <div className="selected-product">
-        <div className="product-row d-flex align-items-center mb-4">
-          <div className="product-image" style={{ width: "100px", marginRight: "20px" }}>
-            <img 
-              src={selectedProduct.image} 
-              alt={selectedProduct.title} 
-              style={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }}
-            />
-          </div>
-          <div className="product-details flex-grow-1">
-            <h5>{selectedProduct.title}</h5>
-            <p className="mb-0" style={{ color: "#e0ae50" }}>
-              ${selectedProduct.price.toFixed(2)}
-            </p>
+          <div className="box2">
+            {selectedProduct ? (
+              <div className="selected-product">
+                <div className="product-row d-flex align-items-center mb-4">
+                  <div
+                    className="product-image"
+                    style={{ width: "100px", marginRight: "20px" }}
+                  >
+                    <img
+                      src={selectedProduct.image}
+                      alt={selectedProduct.title}
+                      style={{
+                        maxWidth: "100%",
+                        maxHeight: "100px",
+                        objectFit: "contain",
+                      }}
+                    />
+                  </div>
+                  <div className="product-details flex-grow-1">
+                    <h5>{selectedProduct.title}</h5>
+                    <p className="mb-0" style={{ color: "#e0ae50" }}>
+                      ${selectedProduct.price.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-4">
+                <p>
+                  No product selected. <Link to="/">Return to shop</Link>
+                </p>
+              </div>
+            )}
+
+            <div className="totalt">
+              <h4 className="rubrik3">Totalt belopp inkl. moms</h4>
+              <p className="text-end pe-4 fw-bold" style={{ color: "#e0ae50" }}>
+                ${selectedProduct ? selectedProduct.price.toFixed(2) : "0.00"}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    ) : (
-      <div className="text-center py-4">
-        <p>No product selected. <Link to="/">Return to shop</Link></p>
-      </div>
-    )}
-    
-    <div className="totalt">
-      <h4 className="rubrik3">Totalt belopp inkl. moms</h4>
-      <p className="text-end pe-4 fw-bold" style={{ color: "#e0ae50" }}>
-        ${selectedProduct ? selectedProduct.price.toFixed(2) : '0.00'}
-      </p>
-    </div>
-  </div>
-</div>
 
         <div className="rubrik">
           <h4 className="rubrik2">2. Dina uppgifter</h4>
@@ -132,27 +141,25 @@ function Checkout() {
                   <p style={{ color: "red" }}>{errors.streetAddress}</p>
                 )}
 
-                <div className="address-container">
-                  <input
-                    type="text"
-                    name="zipCode"
-                    placeholder="Zip Code"
-                    value={formData.zipCode}
-                    onChange={handleInput}
-                  />
-                  {errors.zipCode && (
-                    <p style={{ color: "red" }}>{errors.zipCode}</p>
-                  )}
+                <input
+                  type="text"
+                  name="zipCode"
+                  placeholder="Zip Code"
+                  value={formData.zipCode}
+                  onChange={handleInput}
+                />
+                {errors.zipCode && (
+                  <p style={{ color: "red" }}>{errors.zipCode}</p>
+                )}
 
-                  <input
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    value={formData.city}
-                    onChange={handleInput}
-                  />
-                  {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
-                </div>
+                <input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  value={formData.city}
+                  onChange={handleInput}
+                />
+                {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
 
                 <input
                   type="text"
@@ -167,7 +174,7 @@ function Checkout() {
               </div>
 
               <div className="buttons">
-                <Button type="button" onClick={handleSubmit}>
+                <Button type="button" onClick={handleSubmit} className="btn btn-primary position-relative">
                   Submit
                 </Button>
               </div>

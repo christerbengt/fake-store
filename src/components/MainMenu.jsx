@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-function MainMenu({ onFilterChange, onAboutUsClick }) {
+import logo from "../pictures/logo.png";
+
+function MainMenu({ onFilterChange }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -33,9 +35,11 @@ function MainMenu({ onFilterChange, onAboutUsClick }) {
     <div className="container py-3 py-md-4">
       <div className="row align-items-center">
         <div className="col-12 col-md-6 mb-3 mb-md-0">
-          <h1 className="text-center text-md-start" style={{ fontFamily: "'Hanken Grotesk', sans-serif", fontWeight: "700" }}>
-            Faux Finds
-            </h1>
+          
+          <div className="logo-container d-flex justify-content-center justify-content-md-start">
+            <img src={logo} alt="Faux Finds Logo" className="logo" />
+          </div>
+          
         </div>
         <div className="col-12 col-md-6">
           <div className="d-flex flex-column flex-md-row justify-content-md-end align-items-center gap-2 gap-md-3">
@@ -53,13 +57,9 @@ function MainMenu({ onFilterChange, onAboutUsClick }) {
               ))}
             </select>
             
-            <button
-              onClick={onAboutUsClick} 
-              className="btn btn-outline-primary w-100"
-              disabled={isLoading}
-            >
+            <Link to='/AboutUs' className="btn btn-outline-primary" >
               About Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>

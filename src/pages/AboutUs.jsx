@@ -1,12 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/AboutUs.css";
+ 
+import logo from "../pictures/logo.png";
 
 const AboutUs = () => {
   return (
     <div className="about-container">
       {/* Sidebar */}
       <div className="sidebar">
-        <img src="../pictures/logo.png" alt="Faux Finds Logo" className="logo" />
+        <Link to="/" className="btn btn-outline-primary">
+          <img src={logo} alt="Faux Finds Logo" className="logo" />
+        </Link>
         <a href="#" className="nav-link">Om oss</a>
         <a href="#" className="nav-link">Här finns vi</a>
         <a href="#" className="nav-link">Kartan</a>

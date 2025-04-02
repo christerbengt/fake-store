@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"; //USE s för spara värdet & 
 // USE e "När den här sidan laddas, gör detta en gång."
+
+import { Link } from "react-router-dom";
 import "../styles/ThankYou.css";
 
 const ThankYou = () => {
@@ -21,7 +23,7 @@ const ThankYou = () => {
         <h1>Tack för ditt köp!</h1>
         <p>Din beställning är mottagen och vi börjar packa direkt.</p>
         <p className="order-number">Ordernummer: <span>{orderNumber}</span></p>
-        <a href="/" className="thankyou-btn">Till startsidan</a>
+        <Link to="/" className="thankyou-btn">Till startsidan</Link>
       </div>
     </div>
   );
