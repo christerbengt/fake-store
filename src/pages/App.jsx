@@ -2,20 +2,23 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import MainMenu from "../components/MainMenu";
+import Header from "../components/Header";
 import Card from "../components/Card";
 import AboutUs from "../pages/AboutUs";
 import Checkout from "../pages/Checkout";
+import CategoryFilter from "../components/CategoryFilter";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filter, setFilter] = useState({ category: "" });
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("")
+  const [categories, setCategories] = useState([]);
   const navigate = useNavigate();
 
   // Add Hanken Grotesk font
@@ -56,6 +59,7 @@ function App() {
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
+        setCategories([...new Set(data.map((product) =>product.category))]);
         setLoading(false);
       })
       .catch((error) => {
@@ -66,20 +70,14 @@ function App() {
   }, []);
 
   // Filter products by category
-  useEffect(() => {
-    let filtered = [...products];
-
-    if (filter.category) {
-      filtered = filtered.filter(
-        (product) => product.category === filter.category
-      );
+  const handleFilterChange = (category) => {
+    setSelectedCategory(category);
+    if (category === "") {
+      setFilteredProducts(products); // Visa alla produkter om ingen kategori är vald
+    } else {
+      setFilteredProducts(products.filter((product) => product.category === category))
+      
     }
-    setFilteredProducts(filtered);
-  }, [filter, products]);
-
-  const handleFilterChange = (newFilter) => {
-    setFilter(newFilter);
-    setShowAboutUs(false);
   };
 
   const toggleAboutUs = () => {
@@ -125,10 +123,9 @@ function App() {
 
   return (
     <div className="container-fluid px-0">
-      <MainMenu
-        onFilterChange={handleFilterChange}
-        onAboutUsClick={toggleAboutUs}
+      <Header
       />
+      <CategoryFilter products={products} onFilterChange={handleFilterChange}></CategoryFilter>
       <div className="container py-4">
         {filteredProducts.length === 0 ? (
           <div className="row">
@@ -163,5 +160,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
