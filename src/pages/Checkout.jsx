@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 
 import Button from "../components/ValidationButton.jsx";
 import validateFields from "../scripts/validation.js";
-import ThankYou from "../pages/Thankyou.jsx";
 
 function Checkout() {
   const [formData, setFormData] = useState( {
@@ -17,6 +16,7 @@ function Checkout() {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleInput = (event) => {
     setFormData({ ...formData,  [event.target.name]: event.target.value });
@@ -24,10 +24,9 @@ function Checkout() {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     const validationErrors = validateFields(formData);
 
-    if (validationErrors) {
+    if (validationErrors && Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       navigate("/Thankyou");
@@ -141,7 +140,7 @@ function Checkout() {
               </div>
 
               <div className="buttons">
-                <Button onClick={handleSubmit}>
+                <Button type="button" onClick={handleSubmit}>
                   Submit
                 </Button>
               </div>

@@ -12,7 +12,7 @@ function ValidationButton({ to, onClick, children }) {
   };
 
   return (
-    <button className="btn btn-primary" onClick={handleClick}>
+    <button type="button" className="btn btn-primary" onClick={handleClick}>
       {children}
     </button>
   );
