@@ -143,7 +143,7 @@ function App() {
       )}
 
       <div className="mt-5 text-center mb-5">
-        <Link to={Checkout} className="btn btn-primary">
+        <Link to="/checkout" className="btn btn-primary">
           Go to Checkout
         </Link>
       </div>
