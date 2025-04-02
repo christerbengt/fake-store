@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +16,8 @@ function App() {
   const [filter, setFilter] = useState({ category: "" });
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
 
   // Add Hanken Grotesk font
   useEffect(() => {
@@ -83,6 +84,15 @@ function App() {
     setShowAboutUs(!showAboutUs);
   };
 
+  // Function to handle product selection
+  const handleProductSelect = (product) => {
+    setSelectedProduct(product);
+    // Store the selected product in localStorage so it can be accessed from the Checkout page
+    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    // Navigate to checkout
+    navigate('/checkout');
+  };
+
   if (loading) {
     return (
       <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh"}}>
@@ -124,7 +134,7 @@ function App() {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
               {filteredProducts.map((product) => (
                 <div key={product.id} className="col mb-4 d-flex">
-                  <Card product={product} />
+                  <Card product={product} onBuyNow={handleProductSelect} />
                 </div>
               ))}
             </div>

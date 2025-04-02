@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ product }) {
+function Card({ product, onBuyNow }) {
     // Add safety check
     if (!product) {
         console.error("No product data received in Card component");
@@ -37,9 +37,15 @@ function Card({ product }) {
                 </h5>
                 <p className="card-text fw-bold mb-3" style={{ color: "#e0ae50" }}>${product.price?.toFixed(2) || 'N/A'}</p>
                 
-                <button className="btn btn-primary mt-auto">
-                    Buy Now
-                </button>
+                <button 
+                    className="btn btn-primary mt-auto"
+                    onClick={() => {
+                    console.log("Buy Now clicked for:", product);
+                    onBuyNow(product);
+  }}
+>
+  Buy Now
+</button>
             </div>
         </div>
     );
