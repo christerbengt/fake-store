@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/checkout.css";
 
@@ -18,7 +18,15 @@ function Checkout() {
   });
 
   const [errors, setErrors] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const productData = localStorage.getItem('selectedProduct');
+    if (productData) {
+      setSelectedProduct(JSON.parse(productData));
+    }
+  }, []);
 
   const handleInput = (event) => {
     setFormData({ ...formData,  [event.target.name]: event.target.value });
@@ -51,22 +59,39 @@ function Checkout() {
         </div>
 
         <div className="box">
-          <div className="box2">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <div className="totalt">
-              <h4 className="rubrik3">Totalt belopp inkl. moms</h4>
-            </div>
+  <div className="box2">
+    {selectedProduct ? (
+      <div className="selected-product">
+        <div className="product-row d-flex align-items-center mb-4">
+          <div className="product-image" style={{ width: "100px", marginRight: "20px" }}>
+            <img 
+              src={selectedProduct.image} 
+              alt={selectedProduct.title} 
+              style={{ maxWidth: "100%", maxHeight: "100px", objectFit: "contain" }}
+            />
+          </div>
+          <div className="product-details flex-grow-1">
+            <h5>{selectedProduct.title}</h5>
+            <p className="mb-0" style={{ color: "#e0ae50" }}>
+              ${selectedProduct.price.toFixed(2)}
+            </p>
           </div>
         </div>
+      </div>
+    ) : (
+      <div className="text-center py-4">
+        <p>No product selected. <Link to="/">Return to shop</Link></p>
+      </div>
+    )}
+    
+    <div className="totalt">
+      <h4 className="rubrik3">Totalt belopp inkl. moms</h4>
+      <p className="text-end pe-4 fw-bold" style={{ color: "#e0ae50" }}>
+        ${selectedProduct ? selectedProduct.price.toFixed(2) : '0.00'}
+      </p>
+    </div>
+  </div>
+</div>
 
         <div className="rubrik">
           <h4 className="rubrik2">2. Dina uppgifter</h4>

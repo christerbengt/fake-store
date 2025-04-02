@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -16,7 +16,8 @@ function App() {
   const [filter, setFilter] = useState({ category: "" });
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
 
   // Add Hanken Grotesk font
   useEffect(() => {
@@ -53,7 +54,6 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        console.log("API data:", data); // Debug log
         setProducts(data);
         setFilteredProducts(data);
         setLoading(false);
@@ -72,7 +72,6 @@ function App() {
     if (filter.category) {
       filtered = filtered.filter((product) => product.category === filter.category);
     }
-    console.log("Filtered products:", filtered); // Debug log
     setFilteredProducts(filtered);
   }, [filter, products]);
 
@@ -85,9 +84,18 @@ function App() {
     setShowAboutUs(!showAboutUs);
   };
 
+  // Function to handle product selection
+  const handleProductSelect = (product) => {
+    setSelectedProduct(product);
+    // Store the selected product in localStorage so it can be accessed from the Checkout page
+    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    // Navigate to checkout
+    navigate('/checkout');
+  };
+
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh", color: "white" }}>
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh"}}>
         <div className="spinner-border text-warning" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -97,7 +105,7 @@ function App() {
 
   if (error) {
     return (
-      <div className="container-fluid text-center py-5" style={{ color: "white" }}>
+      <div className="container text-center py-5">
         <h3>Error loading products</h3>
         <p>{error}</p>
         <button className="btn btn-primary" onClick={() => window.location.reload()}>
@@ -108,33 +116,25 @@ function App() {
   }
 
   return (
-
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <MainMenu onFilterChange={handleFilterChange} onAboutUsClick={toggleAboutUs} />
 
       {showAboutUs ? (
         <AboutUs />
       ) : (
-        <div className="container px-4">
-          {/* Debug information */}
-          <div className="row mb-3">
-            <div className="col-12">
-              <div className="p-3 text-white">
-                <small>Debug: {filteredProducts.length} products loaded</small>
-              </div>
-            </div>
-          </div>
-
+        <div className="container py-4">
           {filteredProducts.length === 0 ? (
-            <div className="text-center py-5" style={{ color: "white" }}>
-              <h3>No products found</h3>
-              <p>Try selecting a different category or refresh the page.</p>
+            <div className="row">
+              <div className="col-12 text-center py-5">
+                <h3>No products found</h3>
+                <p>Try selecting a different category or refresh the page.</p>
+              </div>
             </div>
           ) : (
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
               {filteredProducts.map((product) => (
-                <div key={product.id} className="col">
-                  <Card product={product} />
+                <div key={product.id} className="col mb-4 d-flex">
+                  <Card product={product} onBuyNow={handleProductSelect} />
                 </div>
               ))}
             </div>
@@ -142,10 +142,14 @@ function App() {
         </div>
       )}
 
-      <div className="mt-5 text-center mb-5">
-        <Link to="/checkout" className="btn btn-primary">
-          Go to Checkout
-        </Link>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 text-center py-4">
+            <Link to="/checkout" className="btn btn-primary btn-lg" style={{ maxWidth: "300px" }}>
+              Go to Checkout
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
