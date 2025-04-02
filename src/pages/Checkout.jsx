@@ -5,6 +5,8 @@ import "../styles/checkout.css";
 import Button from "../components/ValidationButton.jsx";
 import validateFields from "../scripts/validation.js";
 
+import logo from "../pictures/logo.png";
+
 function Checkout() {
   const [formData, setFormData] = useState( {
     name: '',
@@ -36,7 +38,7 @@ function Checkout() {
   return (
     <div>
       <Link className="logo" to="/">
-        <img src="pictures/logo.png" alt="Faux Finds logo" />
+        <img src={logo} alt="Faux Finds logo" />
       </Link>
 
       <div className="container">
