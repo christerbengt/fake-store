@@ -119,16 +119,14 @@ function Checkout() {
                 />
                 {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
 
-                <div className="name-container">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    value={formData.name}
-                    onChange={handleInput}
-                  />
-                  {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
-                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleInput}
+                />
+                {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
 
                 <input
                   type="text"
@@ -174,7 +172,11 @@ function Checkout() {
               </div>
 
               <div className="buttons">
-                <Button type="button" onClick={handleSubmit} className="btn btn-primary position-relative">
+                <Button
+                  type="button"
+                  onClick={handleSubmit}
+                  className="btn btn-primary position-relative"
+                >
                   Submit
                 </Button>
               </div>
