@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/AboutUs.css";
- 
-import logo from "../pictures/logo.png";
 
 const AboutUs = () => {
   return (
