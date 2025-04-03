@@ -43,10 +43,10 @@ function Checkout() {
   return (
     <div className="container">
       <div className="header">
-        <h1 className="rubrik1">Kassa</h1>
+        <h1 className="rubrik1">Checkout</h1>
       </div>
       <div className="rubrik">
-        <h4 className="rubrik2">Dina produkter</h4>
+        <h4 className="rubrik2">Your products</h4>
         <div className="box">
           {selectedProduct ? (
             <div className="selected-product">
@@ -82,7 +82,7 @@ function Checkout() {
           )}
 
           <div className="totalt">
-            <h4 className="rubrik3">Totalt belopp inkl. moms</h4>
+            <h4 className="rubrik3">Total price, vat included.</h4>
             <p className="text-end pe-4 fw-bold" style={{ color: "#e0ae50" }}>
               ${selectedProduct ? selectedProduct.price.toFixed(2) : "0.00"}
             </p>
@@ -91,7 +91,7 @@ function Checkout() {
       </div>
 
       <div className="rubrik">
-        <h4 className="rubrik2">Dina uppgifter</h4>
+        <h4 className="rubrik2">Contact information</h4>
         <div className="box2">
           <form onSubmit={handleSubmit} id="checkout-form" noValidate>
             <div className="form">
@@ -161,7 +161,7 @@ function Checkout() {
                   onClick={handleSubmit}
                   className="btn btn-primary position-relative"
                 >
-                  Slutför köp
+                  Submit
                 </Button>
               </div>
             </div>
