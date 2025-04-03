@@ -130,7 +130,7 @@ function App() {
         onFilterChange={handleFilterChange}
         onAboutUsClick={toggleAboutUs}
       />
-      <div className="container py-4">
+      <div className="container-fluid py-4 px-md-3">
         {filteredProducts.length === 0 ? (
           <div className="row">
             <div className="col-12 text-center py-5">
@@ -139,9 +139,9 @@ function App() {
             </div>
           </div>
         ) : (
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          <div className="row g-4">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="col mb-4 d-flex">
+              <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <Card product={product} onBuyNow={handleProductSelect} />
               </div>
             ))}
