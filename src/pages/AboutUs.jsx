@@ -8,25 +8,6 @@ import logo from "../pictures/logo.png";
 const AboutUs = () => {
   return (
     <div className="about-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <Link to="/" className="btn btn-outline-primary">
-          <img src={logo} alt="Faux Finds Logo" className="logo" />
-        </Link>
-        <a href="#" className="nav-link">Om oss</a>
-        <a href="#" className="nav-link">Här finns vi</a>
-        <a href="#" className="nav-link">Kartan</a>
-
-        <div className="socials">
-          <div className="social-title">Sociala Medier</div>
-          <div className="social-buttons">
-            <a href="#" className="social-btn">Facebook</a>
-            <a href="#" className="social-btn">Instagram</a>
-            <a href="#" className="social-btn">Twitter</a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="main-content">
         <h2 className="hero-title">Faux Finds – Har du frågor? Vi har svaren!</h2>
