@@ -20,10 +20,10 @@ const ThankYou = () => {
   return (
     <div className="thankyou-wrapper">
       <div className="thankyou-box">
-        <h1>Tack för ditt köp!</h1>
-        <p>Din beställning är mottagen och vi börjar packa direkt.</p>
-        <p className="order-number">Ordernummer: <span>{orderNumber}</span></p>
-        <Link to="/" className="thankyou-btn">Till startsidan</Link>
+        <h1>Thank you for your purchase!</h1>
+        <p>Thank you! We've received your order and our team is already getting it ready for shipment.</p>
+        <p className="order-number">Ordernumber: <span>{orderNumber}</span></p>
+        <Link to="/" className="thankyou-btn">Back to homepage</Link>
       </div>
     </div>
   );
