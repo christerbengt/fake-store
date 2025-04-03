@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import MainMenu from "../components/MainMenu";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 import AboutUs from "../pages/AboutUs";
 import Checkout from "../pages/Checkout";
 
@@ -159,6 +160,7 @@ function App() {
             </Link>
           </div>
         </div>
+        <Footer></Footer>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import Button from "../components/ValidationButton.jsx";
 import validateFields from "../scripts/validation.js";
 
 import logo from "../pictures/logo.png";
+import Footer from "../components/Footer.jsx";
 
 function Checkout() {
   const [formData, setFormData] = useState({
@@ -33,7 +34,9 @@ function Checkout() {
     setErrors({ ...errors, [event.target.name]: "" });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    if (event) event.preventDefault();
+
     const validationErrors = validateFields(formData);
 
     if (validationErrors && Object.keys(validationErrors).length > 0) {
@@ -119,14 +122,16 @@ function Checkout() {
                 />
                 {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
 
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleInput}
-                />
-                {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+                
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={formData.name}
+                    onChange={handleInput}
+                  />
+                  {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+                
 
                 <input
                   type="text"
@@ -172,17 +177,14 @@ function Checkout() {
               </div>
 
               <div className="buttons">
-                <Button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="btn btn-primary position-relative"
-                >
+                <Button type="button" onClick={handleSubmit} className="btn btn-primary position-relative">
                   Submit
                 </Button>
               </div>
             </form>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

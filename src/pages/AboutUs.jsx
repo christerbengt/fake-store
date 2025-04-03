@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/AboutUs.css";
  
+import Footer from "../components/Footer";
 import logo from "../pictures/logo.png";
 
 const AboutUs = () => {
@@ -83,12 +84,7 @@ const AboutUs = () => {
           </div>
         </div>
 
-        {/*guldiga strecket*/}
-        <footer className="footer">
-          © 2025 Faux Finds |
-          <a href="#"> Integritetspolicy</a> |
-          <a href="#"> Villkor</a>
-        </footer>
+        <Footer/>
       </div>
     </div>
   );
