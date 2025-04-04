@@ -4,6 +4,7 @@ import "../styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import Footer from "../components/Footer";
 import AboutUs from "../pages/AboutUs";
 import Checkout from "../pages/Checkout";
 import CategoryFilter from "../components/CategoryFilter";
@@ -135,9 +136,9 @@ function App() {
             </div>
           </div>
         ) : (
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          <div className="row g-4">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="col mb-4 d-flex">
+              <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <Card product={product} onBuyNow={handleProductSelect} />
               </div>
             ))}
@@ -156,6 +157,7 @@ function App() {
             </Link>
           </div>
         </div>
+        <Footer></Footer>
       </div>
     </div>
   );
