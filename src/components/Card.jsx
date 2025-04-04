@@ -1,17 +1,12 @@
 import React from "react";
 
+function Card({ product, onBuyNow }) {
+  if (!product) {
+    return <div className="card h-100 p-3 text-center">Product data not available</div>;
+  }
 
-function Card({ product }) {
-      if (!product) {
-            return <div className="card h-100 p-3 text-center">Product data not available</div>;
-    }
-
-    // Log product for debugging
-    console.log("Rendering card for product:", product);
-    /*
-    return <div className="simple-card">Product data not available</div>;
-    */
-  
+  // Log product for debugging
+  console.log("Rendering card for product:", product);
 
   return (
     <div className="simple-card">
@@ -49,7 +44,5 @@ function Card({ product }) {
     </div>
   );
 }
-
-
 
 export default Card;

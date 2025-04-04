@@ -12,11 +12,11 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [filter, setFilter] = useState({ category: "" });
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("")
   const [categories, setCategories] = useState([]);
+  const [showAboutUs, setShowAboutUs] = useState(false);
   const navigate = useNavigate();
 
   // Add Hanken Grotesk font
@@ -70,11 +70,11 @@ function App() {
   // Filter products by category
   const handleFilterChange = (category) => {
     setSelectedCategory(category);
+    
     if (category === "") {
-      setFilteredProducts(products); // Visa alla produkter om ingen kategori är vald
+      setFilteredProducts(products);
     } else {
-      setFilteredProducts(products.filter((product) => product.category === category))
-
+      setFilteredProducts(products.filter((product) => product.category === category));
     }
   };
 
