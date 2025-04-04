@@ -45,8 +45,8 @@ function Checkout() {
   };
 
   return (<>
-    <div><Header></Header></div>
     <div className="container">
+      <Header />
       <div className="header">
         <h1 className="rubrik1">Checkout</h1>
       </div>

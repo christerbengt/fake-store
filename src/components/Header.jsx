@@ -12,16 +12,17 @@ function Header() {
   };
 
   return (
-    <header className="header">
+    <div className="container-sm py-1">
+    <header className="navbar">
       {/* Logo */}
-      <div className="logo-container">
+      <div className="logo-container mx-auto">
         <Link to="/">
           <img src={logo} alt="Faux Finds Logo" className="logo" />
         </Link>
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="nav">
+      <nav className="nav gap-4 fs-5 mx-auto">
         <Link to="/" className="nav-link">Home</Link>
         <Link to="/AboutUs" className="nav-link">About Us</Link>
         <Link to="/Checkout" className="nav-link cart-icon">
@@ -43,6 +44,7 @@ function Header() {
         </Link>
       </div>
     </header>
+    </div>
   );
 }
 
