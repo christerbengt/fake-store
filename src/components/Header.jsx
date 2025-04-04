@@ -1,27 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../pictures/logo.png";
+import "../styles/Header.css";
+import { FaShoppingCart } from "react-icons/fa"; 
 
-function Header(){
- return (
-    <div className="container py-3 py-md-4">
-      <div className="row align-items-center">
-        <div className="col-12 col-md-6 mb-3 mb-md-0">
-          
-          <div className="logo-container d-flex justify-content-center justify-content-md-start">
-            <img src={logo} alt="Faux Finds Logo" className="logo" />
-          </div>
-          
-        </div>
+function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <Link to='/AboutUs' className="btn btn-outline-primary" >
-              About Us
-            </Link>
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  return (
+    <header className="header">
+      {/* Logo */}
+      <div className="logo-container">
+        <Link to="/">
+          <img src={logo} alt="Faux Finds Logo" className="logo" />
+        </Link>
       </div>
-      
-      <hr className="my-3 my-md-4" style={{ borderColor: "#444" }} />
-    </div>
+
+      {/* Desktop Navigation */}
+      <nav className="nav">
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/AboutUs" className="nav-link">About Us</Link>
+        <Link to="/Checkout" className="nav-link cart-icon">
+          <FaShoppingCart size={24} />
+        </Link>
+      </nav>
+
+      {/* Mobile Menu Button */}
+      <button className="menu-btn" onClick={toggleMenu} aria-expanded={isMenuOpen}>
+        <span className={isMenuOpen ? "menu-icon open" : "menu-icon"}></span>
+      </button>
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${isMenuOpen ? "show" : ""}`}>
+        <Link to="/" className="nav-link" onClick={toggleMenu}>Home</Link>
+        <Link to="/AboutUs" className="nav-link" onClick={toggleMenu}>About Us</Link>
+        <Link to="/Checkout" className="nav-link" onClick={toggleMenu}>
+          <FaShoppingCart size={20} />
+        </Link>
+      </div>
+    </header>
   );
 }
 
-export default Header
+export default Header;

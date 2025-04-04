@@ -126,8 +126,10 @@ function App() {
     <div className="container-fluid px-0">
       <Header
       />
-      <CategoryFilter products={products} onFilterChange={handleFilterChange}></CategoryFilter>
-      <div className="container py-4">
+<CategoryFilter 
+  categories={categories} 
+  onFilterChange={handleFilterChange}
+/>      <div className="container py-4">
         {filteredProducts.length === 0 ? (
           <div className="row">
             <div className="col-12 text-center py-5">

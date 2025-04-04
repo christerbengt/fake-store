@@ -4,6 +4,7 @@ import "../styles/checkout.css";
 import Button from "../components/ValidationButton.jsx";
 import validateFields from "../scripts/validation.js";
 import Footer from "../components/Footer.jsx";
+import Header from "../components/Header.jsx";
 
 function Checkout() {
   const [formData, setFormData] = useState({
@@ -43,7 +44,8 @@ function Checkout() {
     }
   };
 
-  return (
+  return (<>
+    <div><Header></Header></div>
     <div className="container">
       <div className="header">
         <h1 className="rubrik1">Checkout</h1>
@@ -171,6 +173,7 @@ function Checkout() {
         <Footer />
       </div>
     </div>
+    </>
   )
 }
 

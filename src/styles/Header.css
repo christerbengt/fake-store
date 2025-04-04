@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Ändra detta till önskad bakgrundsfärg */
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #222; /* Sätter bakgrundsfärg på headern */
+    border-bottom: 2px solid #444;
+    position: relative;
+  }
+  
+  /* Logo */
+  .logo {
+    max-height: 60px;
+  }
+  
+  /* Navigation */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav-link {
+    text-decoration: none;
+    color: white; /* Färgen på länkar */
+    font-size: 16px;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #e0ae50;
+  }
+  
+  /* Shopping Cart */
+  .cart-icon {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: white; /* Se till att ikonen också är vit */
+  }
+  
+  .cart-icon:hover {
+    color: #e0ae50;
+  }
+  
+  /* Mobile Menu Button */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .menu-icon {
+    width: 30px;
+    height: 3px;
+    background: white; /* Gör menyikonen vit */
+    position: relative;
+    display: block;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-icon::before,
+  .menu-icon::after {
+    content: "";
+    width: 30px;
+    height: 3px;
+    background: white; /* Se till att dessa också är vita */
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .menu-icon::before {
+    top: -8px;
+  }
+  
+  .menu-icon::after {
+    top: 8px;
+  }
+  
+  /* Öppen meny animation */
+  .menu-icon.open {
+    background: transparent;
+  }
+  
+  .menu-icon.open::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  
+  .menu-icon.open::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #222; /* Samma färg som header */
+    border: 1px solid #444;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    width: 150px;
+  }
+  
+  .mobile-menu.show {
+    display: flex;
+  }
+  
+  .mobile-menu .nav-link {
+    color: white; /* Se till att länkarna i mobilmenyn också är vita */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+  
+    .menu-btn {
+      display: block;
+    }
+  }

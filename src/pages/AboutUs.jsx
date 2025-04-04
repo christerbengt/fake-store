@@ -4,9 +4,12 @@ import "../styles/AboutUs.css";
  
 import Footer from "../components/Footer";
 import logo from "../pictures/logo.png";
+import Header from "../components/Header";
 
 const AboutUs = () => {
   return (
+    <>
+    <div><Header></Header></div>
     <div className="about-container">
       {/* Main Content */}
       <div className="main-content">
@@ -67,6 +70,7 @@ const AboutUs = () => {
         <Footer/>
       </div>
     </div>
+    </>
   );
 };
 

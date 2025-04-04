@@ -10,13 +10,14 @@ function Card({ product }) {
 
     // Log product for debugging
     console.log("Rendering card for product:", product);
-    
+    /*
     return (
       <div className="card h-100 p-3 text-center">
         Product data not available
       </div>
     );
-  }
+    */
+  
 
   return (
     <div style={{ padding: "5px", height: "100%" }}>
@@ -62,5 +63,7 @@ function Card({ product }) {
     </div>
   );
 }
+
+
 
 export default Card;
