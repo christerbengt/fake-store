@@ -65,16 +65,15 @@ const handleSubmit = (event) => {
                 <p>Thank you for signing up with {email}</p>
             ) : (
                 <ul className="list-unstyled">
-                <li>Sign up</li>
-                <form onSubmit={handleSubmit} id="checkout-form" noValidate>
                 <li>
-                  <input
+                  <input className="form-control-plaintext text-white mx-1"
                     type="text"
                     name="email"
                     placeholder="Email"
                     value={email}
                     onChange={handleInput}
                     required
+                    style={{ textAlign: "center" }}
                   />
                   {error && <p style={{ color: "red" }}>{error}</p>}
                 </li>
@@ -83,7 +82,6 @@ const handleSubmit = (event) => {
                     Sign Up
                     </button>
                 </li>
-                </form>
               </ul>
             )}
           </div>
