@@ -14,7 +14,7 @@ function App() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
   const [showAboutUs, setShowAboutUs] = useState(false);
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function App() {
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
-        setCategories([...new Set(data.map((product) =>product.category))]);
+        setCategories([...new Set(data.map((product) => product.category))]);
         setLoading(false);
       })
       .catch((error) => {
@@ -70,11 +70,13 @@ function App() {
   // Filter products by category
   const handleFilterChange = (category) => {
     setSelectedCategory(category);
-    
+
     if (category === "") {
       setFilteredProducts(products);
     } else {
-      setFilteredProducts(products.filter((product) => product.category === category));
+      setFilteredProducts(
+        products.filter((product) => product.category === category)
+      );
     }
   };
 
@@ -120,12 +122,13 @@ function App() {
 
   return (
     <div className="container-fluid px-0">
-      <Header
-      />
-<CategoryFilter 
-  categories={categories} 
-  onFilterChange={handleFilterChange}
-/>      <div className="container py-4">
+      <Header />
+
+      <div className="container py-4">
+      <CategoryFilter
+        categories={categories}
+        onFilterChange={handleFilterChange}
+      />{" "}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-5">
             <h3>No products found</h3>
@@ -134,12 +137,15 @@ function App() {
         ) : (
           <div className="products-container">
             {filteredProducts.map((product) => (
-              <Card key={product.id} product={product} onBuyNow={handleProductSelect} />
+              <Card
+                key={product.id}
+                product={product}
+                onBuyNow={handleProductSelect}
+              />
             ))}
           </div>
         )}
       </div>
-      
       <div className="container-sm py-4">
         <div className="text-center py-4">
           <Link
@@ -155,6 +161,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

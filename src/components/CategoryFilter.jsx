@@ -10,7 +10,7 @@ function CategoryFilter({ categories = [], onFilterChange }) {
   };
   
   return (
-    <div className="container py-3">
+    <div className="container-sm py-2">
       <div className="row">
         <div className="col-12 col-md-6">
           <div className="d-flex flex-column flex-md-row justify-content-md-end align-items-center gap-2 gap-md-3">
