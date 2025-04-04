@@ -140,7 +140,7 @@ function App() {
         )}
       </div>
       
-      <div className="container">
+      <div className="container-sm py-4">
         <div className="text-center py-4">
           <Link
             to="/checkout"

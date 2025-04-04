@@ -35,7 +35,7 @@ const handleSubmit = (event) => {
 
     return (
     <div className="footer">
-      <div className="container">
+      <div className="container-sm py-1">
         <div className="row">
           <div className="col-md-3 col-sm-6 mx-auto">
             <h4>Media</h4>
