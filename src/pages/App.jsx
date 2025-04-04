@@ -68,19 +68,17 @@ function App() {
   }, []);
 
   // Filter products by category
-  const handleFilterChange = (category) => {
-    setSelectedCategory(category);
-    if (category === "") {
-      setFilteredProducts(products); // Visa alla produkter om ingen kategori är vald
-    } else {
-      setFilteredProducts(products.filter((product) => product.category === category))
-      
-    }
-  };
-
-  const toggleAboutUs = () => {
-    setShowAboutUs(!showAboutUs);
-  };
+  const handleFilterChange = (newFilter) => {
+  // Update the original filter state to maintain compatibility
+  setFilter(newFilter);
+  
+  // Apply filtering directly
+  if (newFilter.category === "") {
+    setFilteredProducts(products); // Show all products if no category is selected
+  } else {
+    setFilteredProducts(products.filter((product) => product.category === newFilter.category));
+  }
+};
 
   // Function to handle product selection
   const handleProductSelect = (product) => {
