@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "../components/Header";
 import Card from "../components/Card";
 import Footer from "../components/Footer";
-import AboutUs from "../pages/AboutUs";
-import Checkout from "../pages/Checkout";
 import CategoryFilter from "../components/CategoryFilter";
 
 function App() {
@@ -15,7 +13,6 @@ function App() {
 
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [filter, setFilter] = useState({ category: "" });
-  const [showAboutUs, setShowAboutUs] = useState(false);
   const [error, setError] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("")
@@ -87,7 +84,6 @@ function App() {
 
   // Function to handle product selection
   const handleProductSelect = (product) => {
-    setSelectedProduct(product);
     // Store the selected product in localStorage so it can be accessed from the Checkout page
     localStorage.setItem("selectedProduct", JSON.stringify(product));
     // Navigate to checkout
@@ -131,35 +127,30 @@ function App() {
   onFilterChange={handleFilterChange}
 />      <div className="container py-4">
         {filteredProducts.length === 0 ? (
-          <div className="row">
-            <div className="col-12 text-center py-5">
-              <h3>No products found</h3>
-              <p>Try selecting a different category or refresh the page.</p>
-            </div>
+          <div className="text-center py-5">
+            <h3>No products found</h3>
+            <p>Try selecting a different category or refresh the page.</p>
           </div>
         ) : (
-          <div className="row g-4">
+          <div className="products-container">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <Card product={product} onBuyNow={handleProductSelect} />
-              </div>
+              <Card key={product.id} product={product} onBuyNow={handleProductSelect} />
             ))}
           </div>
         )}
       </div>
+      
       <div className="container">
-        <div className="row">
-          <div className="col-12 text-center py-4">
-            <Link
-              to="/checkout"
-              className="btn btn-primary btn-lg"
-              style={{ maxWidth: "300px" }}
-            >
-              Go to Checkout
-            </Link>
-          </div>
+        <div className="text-center py-4">
+          <Link
+            to="/checkout"
+            className="btn btn-primary btn-lg"
+            style={{ maxWidth: "300px" }}
+          >
+            Go to Checkout
+          </Link>
         </div>
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );
