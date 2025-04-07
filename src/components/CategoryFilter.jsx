@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function CategoryFilter({ categories = [], onFilterChange }) {
   const [selectedCategory, setSelectedCategory] = useState("");
-  
+
   const handleCategoryChange = (e) => {
     const newCategory = e.target.value;
     setSelectedCategory(newCategory);
     onFilterChange(newCategory);
   };
-  
+
   return (
     <div className="container-sm py-2">
       <div className="row">

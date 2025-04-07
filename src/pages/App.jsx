@@ -16,7 +16,6 @@ function App() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [categories, setCategories] = useState([]);
-  const [showAboutUs, setShowAboutUs] = useState(false);
   const navigate = useNavigate();
 
   // Add Hanken Grotesk font
@@ -80,16 +79,12 @@ function App() {
     }
   };
 
-  const toggleAboutUs = () => {
-    setShowAboutUs(!showAboutUs);
-  };
-
   // Function to handle product selection
   const handleProductSelect = (product) => {
     // Store the selected product in localStorage so it can be accessed from the Checkout page
     localStorage.setItem("selectedProduct", JSON.stringify(product));
     // Navigate to checkout
-    navigate("/checkout");
+    navigate("/Checkout");
   };
 
   if (loading) {
@@ -121,44 +116,49 @@ function App() {
   }
 
   return (
-    <div className="container-fluid px-0">
-      <Header />
-
-      <div className="container py-4">
-      <CategoryFilter
-        categories={categories}
-        onFilterChange={handleFilterChange}
-      />{" "}
-        {filteredProducts.length === 0 ? (
-          <div className="text-center py-5">
-            <h3>No products found</h3>
-            <p>Try selecting a different category or refresh the page.</p>
-          </div>
-        ) : (
-          <div className="products-container">
-            {filteredProducts.map((product) => (
-              <Card
-                key={product.id}
-                product={product}
-                onBuyNow={handleProductSelect}
-              />
-            ))}
-          </div>
-        )}
+    <>
+      <div className="header">
+        <Header />
       </div>
-      <div className="container-sm py-4">
-        <div className="text-center py-4">
-          <Link
-            to="/checkout"
-            className="btn btn-primary btn-lg"
-            style={{ maxWidth: "300px" }}
-          >
-            Go to Checkout
-          </Link>
+      <div className="container-fluid px-0">
+        <div className="container py-4">
+          <CategoryFilter
+            categories={categories}
+            onFilterChange={handleFilterChange}
+          />{" "}
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-5">
+              <h3>No products found</h3>
+              <p>Try selecting a different category or refresh the page.</p>
+            </div>
+          ) : (
+            <div className="products-container">
+              {filteredProducts.map((product) => (
+                <Card
+                  key={product.id}
+                  product={product}
+                  onBuyNow={handleProductSelect}
+                />
+              ))}
+            </div>
+          )}
         </div>
+        <div className="container-sm py-4">
+          <div className="text-center py-4">
+            <Link
+              to="/checkout"
+              className="btn btn-primary btn-lg"
+              style={{ maxWidth: "300px" }}
+            >
+              Go to Checkout
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="footer-container">
         <Footer />
       </div>
-    </div>
+    </>
   );
 }
 
