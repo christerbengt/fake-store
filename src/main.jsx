@@ -1,6 +1,5 @@
 import React from 'react';
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +11,7 @@ import ThankYou from './pages/Thankyou';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/',  // Change to root path
     element: <App />,
   },
   {
@@ -27,7 +26,9 @@ const router = createBrowserRouter([
     path: '/Thankyou',
     element: <ThankYou />,
   },
-]);
+], {
+  basename: process.env.NODE_ENV === 'production' ? '/fake-store' : '/'
+});
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
