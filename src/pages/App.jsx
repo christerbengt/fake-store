@@ -117,7 +117,7 @@ function App() {
 
   return (
     <>
-      <div className="header">
+      <div className="header flex-grow-1">
         <Header />
       </div>
       <div className="container-fluid px-0">
@@ -142,17 +142,6 @@ function App() {
               ))}
             </div>
           )}
-        </div>
-        <div className="container-sm py-4">
-          <div className="text-center py-4">
-            <Link
-              to="/checkout"
-              className="btn btn-primary btn-lg"
-              style={{ maxWidth: "300px" }}
-            >
-              Go to Checkout
-            </Link>
-          </div>
         </div>
       </div>
       <div className="footer-container">

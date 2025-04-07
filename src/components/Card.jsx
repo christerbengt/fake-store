@@ -2,7 +2,11 @@ import React from "react";
 
 function Card({ product, onBuyNow }) {
   if (!product) {
-    return <div className="card h-100 p-3 text-center">Product data not available</div>;
+    return (
+      <div className="card h-100 p-3 text-center">
+        Product data not available
+      </div>
+    );
   }
 
   // Log product for debugging
@@ -16,7 +20,7 @@ function Card({ product, onBuyNow }) {
           alt={product.title}
           className="simple-product-image"
         />
-        
+
         <div className="simple-card-overlay">
           <h3>{product.title}</h3>
           <p>
@@ -34,10 +38,7 @@ function Card({ product, onBuyNow }) {
         <p className="simple-card-price">
           ${product.price?.toFixed(2) || "N/A"}
         </p>
-        <button
-          className="simple-btn-buy"
-          onClick={() => onBuyNow(product)}
-        >
+        <button className="simple-btn-buy" onClick={() => onBuyNow(product)}>
           Buy Now
         </button>
       </div>
