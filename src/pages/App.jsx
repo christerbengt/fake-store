@@ -46,7 +46,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://cors-anywhere.herokuapp.com/https://fakestoreapi.com/products")
       .then((response) => {
         if (!response.ok) {
           throw new Error(`API error: ${response.status}`);
